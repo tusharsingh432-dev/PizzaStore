@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Noto Sans' !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link {
+  color: black !important;
+}
+
+.loginlink {
+  background-color: red;
+  color: gainsboro !important;
+}
+
+.loginlink:hover {
+  background-color: gainsboro;
+  color: red !important;
+}
+
+.navbar-brand {
+  color: black !important;
+  font-size: large;
+  font-weight: 700;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.pizza {
+  background-color: aliceblue;
+  margin: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  transition: 100ms ease-out;
+  padding: 20px;
+}
+
+.pizza:hover {
+  transform: scale(1.03);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
