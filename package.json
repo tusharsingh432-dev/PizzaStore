@@ -1,0 +1,26 @@
+{
+  "name": "pizza-store",
+  "version": "1.0.0",
+  "description": "Pizza Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tusharsingh432-dev/PizzaStore.git"
+  },
+  "author": "Tushar Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tusharsingh432-dev/PizzaStore/issues"
+  },
+  "homepage": "https://github.com/tusharsingh432-dev/PizzaStore#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.4",
+    "nodemon": "^2.0.15",
+    "router": "^1.3.6"
+  }
+}
