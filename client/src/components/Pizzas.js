@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import { addToCart } from '../actions/cartActions'
+import { useDispatch } from 'react-redux';
 function Pizzas({ pizza }) {
+    const dispatch = useDispatch();
+
+    function handleAddToCart() {
+        dispatch(addToCart(pizza, variant, quantity));
+    }
 
     const handleVariantChange = newVariant => {
         setVariant(newVariant.target.value);
@@ -49,7 +56,7 @@ function Pizzas({ pizza }) {
                 <div className='w-100 m-1'>
                     Price: {pizza.prices[0][variant] * quantity}/-
                 </div>
-                <button className='w-100 m-1'>
+                <button className='w-100 m-1' onClick={handleAddToCart}>
                     Cart
                 </button>
             </div>

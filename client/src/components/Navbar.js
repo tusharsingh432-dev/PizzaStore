@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Navbar() {
+    const cartState = useSelector(state => state.cartReducer);
+    console.log(cartState);
     return (
         <div>
             <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-body">
@@ -12,7 +15,7 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#">Cart</a>
+                                <a className="nav-link" aria-current="page" href="#">Cart {cartState.cartItems.length}</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link loginlink " href="#">Login</a>
@@ -20,8 +23,8 @@ function Navbar() {
                         </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     )
 }
 
