@@ -56,7 +56,7 @@ function Pizzas({ pizza }) {
                 <div className='w-100 m-1'>
                     Price: {pizza.prices[0][variant] * quantity}/-
                 </div>
-                <button className='w-100 m-1' onClick={handleAddToCart}>
+                <button className='w-100 m-1 butn' onClick={handleAddToCart}>
                     Cart
                 </button>
             </div>

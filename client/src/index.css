@@ -51,3 +51,14 @@ code {
   transform: scale(1.03);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
+
+.fas:hover {
+  cursor: pointer;
+  user-select: none;
+}
+
+.butn {
+  background-color: red;
+  border-radius: 6px;
+  border: 0ch;
+}
