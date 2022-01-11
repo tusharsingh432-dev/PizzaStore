@@ -3,10 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 export default function CartScreen() {
     const dispatch = useDispatch();
-
-    function handleIncrement(cartItem) {
-        dispatch(addToCart(cartItem.element, cartItem.variant, cartItem.quantity + 1));
-    }
     const cartState = useSelector(state => state.cartReducer);
     const cartItems = cartState.cartItems;
     const subtotal = cartItems.reduce((acc, item) => acc += (item.price * item.quantity), 0)
