@@ -15,4 +15,16 @@ router.post('/register', async (req, res) => {
     }
 })
 
+router.post('/login', async (req, res) => {
+    const user = req.body;
+    try {
+        const response = await User.find({ ...user });
+        // console.log(response)
+        res.send(response[0])
+    } catch (err) {
+        console.error(err);
+        res.status(404).json({ message: err });
+    }
+})
+
 module.exports = router;

@@ -18,6 +18,9 @@ code {
 .nav-link {
   color: black !important;
 }
+.nav-link:focus{
+  border: none;
+}
 
 .loginlink {
   background-color: red;

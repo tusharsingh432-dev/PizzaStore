@@ -11,3 +11,16 @@ export const registerUser = (user) => async dispatch => {
     }
 
 }
+
+export const loginUser = (user) => async (dispatch, getState) => {
+    dispatch({ type: "LOGIN_USER_REQUEST" })
+
+    try {
+        const response = await axios.post('/api/users/login', { ...user });
+        dispatch({ type: "LOGIN_USER_SUCCESS", payload: response.data });
+        const loginState = getState().loginUserReducer;
+        localStorage.setItem('userInfo', JSON.stringify(loginState));
+    } catch (err) {
+        dispatch({ type: "LOGIN_USER_ERROR", payload: err })
+    }
+}

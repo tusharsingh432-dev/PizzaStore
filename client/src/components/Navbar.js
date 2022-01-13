@@ -1,8 +1,9 @@
 import React from 'react';
+import { Dropdown } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-
 function Navbar() {
     const cartState = useSelector(state => state.cartReducer);
+    const loginState = useSelector(state => state.loginUserReducer);
     // console.log(cartState);
     return (
         <div>
@@ -18,7 +19,24 @@ function Navbar() {
                                 <a className="nav-link" aria-current="page" href="/cart">Cart {cartState.cartItems.length}</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link loginlink " href="/login">Login</a>
+                                {
+                                    loginState.isLogin
+                                        ? <Dropdown>
+                                            <Dropdown.Toggle className="nav-link" id="dropdown-basic"
+                                                style={{ "background": "none", "border": "none", "outline": "none" }}
+                                            >
+                                                Dropdown Button
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+
+                                        : <a className="nav-link loginlink " href="/login">Login</a>
+                                }
                             </li>
                         </ul>
                     </div>
