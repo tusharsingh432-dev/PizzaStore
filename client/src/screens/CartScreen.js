@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import Checkout from '../components/Checkout';
 export default function CartScreen() {
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.cartReducer);
     const cartItems = cartState.cartItems;
     const subtotal = cartItems.reduce((acc, item) => acc += (item.price * item.quantity), 0)
-    console.log(subtotal)
+    // console.log(subtotal)u
     return (
         <div className="row justify-content-center">
             <div className="col-md-6">
@@ -44,7 +45,7 @@ export default function CartScreen() {
             </div>
             <div className="col-md-4">
                 <h2>Subtotal:  ₹{subtotal}/-</h2>
-                <button className="butn">Checkout</button>
+                <Checkout payable={subtotal} />
             </div>
         </div>
     )

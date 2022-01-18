@@ -19,7 +19,9 @@ router.post('/login', async (req, res) => {
     const user = req.body;
     try {
         const response = await User.find({ ...user });
-        // console.log(response)
+        if (response.length == 0) {
+            throw "No user found"
+        }
         res.send(response[0])
     } catch (err) {
         console.error(err);

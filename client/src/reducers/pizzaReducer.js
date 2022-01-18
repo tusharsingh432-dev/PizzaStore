@@ -8,7 +8,8 @@ export const getAllPizzasReducer = (state = { pizzas: [] }, action) => {
             pizzas: action.payload,
             loading: false
         }
-        case 'GET_PIZZA_FAILURE': return {
+        case 'GET_PIZZA_FAILED': return {
+            ...state,
             error: action.payload,
             loading: false
         }

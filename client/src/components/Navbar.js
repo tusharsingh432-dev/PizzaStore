@@ -1,17 +1,26 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../actions/userActions';
 function Navbar() {
     const cartState = useSelector(state => state.cartReducer);
     const loginState = useSelector(state => state.loginUserReducer);
     // console.log(cartState);
+    function handleLogout() {
+        dispatch(logoutUser());
+    }
+    const dispatch = useDispatch();
     return (
         <div>
             <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-body">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">Pizza Store</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler butn" type="button" data-bs-toggle="collapse"
+                        // style={{ backgroundColor: "black" }}
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i className="fa fa-plus" aria-hidden="true"></i>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto">
@@ -25,13 +34,12 @@ function Navbar() {
                                             <Dropdown.Toggle className="nav-link" id="dropdown-basic"
                                                 style={{ "background": "none", "border": "none", "outline": "none" }}
                                             >
-                                                Dropdown Button
+                                                {loginState.user.name}
                                             </Dropdown.Toggle>
 
                                             <Dropdown.Menu>
-                                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                                <Dropdown.Item href="/orders">Orders</Dropdown.Item>
+                                                <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
 

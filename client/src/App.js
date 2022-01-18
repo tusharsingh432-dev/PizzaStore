@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import OrderScreen from './screens/OrderScreen';
 function App() {
   return (
     <div className='App'>
@@ -20,6 +21,7 @@ function App() {
           <Route path='/cart' element={<CartScreen />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
+          <Route path='/orders' element={<OrderScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
