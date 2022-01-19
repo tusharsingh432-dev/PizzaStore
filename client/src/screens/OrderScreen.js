@@ -14,11 +14,11 @@ export default function OrderScreen() {
     return (
         <div>
             <h3>My Orders</h3>
-            {orders && orders.map(order => {
+            {orders && orders.map(order =>
                 <div className="row" key="1">
-                    return <Orders order={order} />
+                    <Orders order={order} />
                 </div>
-            })}
+            )}
         </div>
     )
 }

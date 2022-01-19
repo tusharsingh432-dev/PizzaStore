@@ -11,7 +11,7 @@ const orderSchema = mongoose.Schema({
     orderItems: [],
     orderAmount: { type: Number, require },
     shippingAddress: { type: Object },
-    isDelivered: { type: 'boolean', require },
+    isDelivered: { type: 'boolean', require, default: false },
     transactionId: { type: 'string', require }
 }, {
     timestamps: true
