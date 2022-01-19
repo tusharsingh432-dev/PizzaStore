@@ -1,24 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
 import { placeOrder } from '../actions/orderActions';
+
 export default function Checkout({ payable }) {
     const dispatch = useDispatch();
-    function handleToken(token) {
-        dispatch(placeOrder(token, payable));
+    const [order, setOrder] = useState()
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                setOrder(await axios.post('api/payments/createOrder', { payable }));
+                // console.log(order);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetchData();
+    }, [payable]);
+    async function displayRazorpay() {
+        var options = {
+            key: "rzp_test_Q9SLlfSgFo7Xp9",
+            amount: payable * 100,
+            currency: "INR",
+            name: "Pizza",
+            order_id: order.data,
+            handler: function (response) {
+                dispatch(placeOrder(payable));
+                console.log(response.razorpay_payment_id);
+            },
+            notes: {
+                address: "Razorpay Corporate Office",
+            },
+            theme: {
+                color: "#3399cc",
+            },  
+        };
+        const razorpayObject = new window.Razorpay(options);
+        razorpayObject.open();
     }
-    const publishableKey = 'pk_test_51KHtU9SEXCGwuU0mOjPNZl1nXii27PaV9DYslTgO8PcYFRD9Xi9QlX1n4t6SkW91KkWOGKbYp1yTN9GOwz0ay1Iy00AU17XUW4';
+
     return (
         <div>
-            <StripeCheckout
-                stripeKey={publishableKey}
-                shippingAddress
-                amount={payable * 100}
-                currency='INR'
-                token={handleToken}
-            >
-                <button className="butn">Checkout</button>
-            </StripeCheckout>
+            <button onClick={displayRazorpay} className="butn">Checkout</button>
         </div>
     )
 }

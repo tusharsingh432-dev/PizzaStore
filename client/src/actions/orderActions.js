@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const placeOrder = (token, payable) => async (dispatch, getState) => {
+export const placeOrder = (payable) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
 
     const curUser = getState().loginUserReducer.user;
@@ -8,7 +8,7 @@ export const placeOrder = (token, payable) => async (dispatch, getState) => {
     // console.log(token);
 
     try {
-        const response = await axios.post('/api/orders/placeOrder', { token, payable, curUser, cartItems });
+        const response = await axios.post('/api/orders/placeOrder', { payable, curUser, cartItems });
         dispatch({ type: "PLACE_ORDER_SUCESS" });
         console.log(response);
 
@@ -18,7 +18,7 @@ export const placeOrder = (token, payable) => async (dispatch, getState) => {
 
 }
 
-export const    getAllOrders = () => async (dispatch, getState) => {
+export const getAllOrders = () => async (dispatch, getState) => {
     dispatch({ type: 'GET_ORDERS_REQUEST' });
     const curUser = getState().loginUserReducer.user;
     console.log(curUser);

@@ -9,31 +9,12 @@ router.post('/placeOrder', async (req, res) => {
     const { token, payable, curUser, cartItems } = req.body;
     console.log(req.body)
     try {
-        // const customer = await stripe.customers.create({
-        //     email: token.email,
-        //     source: token.id
-        // })
-
-        // const payment = await stripe.charges.create({
-        //     amount: payable,
-        //     currency: 'INR',
-        //     customer: customer.id,
-        //     reciept_email: token.email
-        // }, {
-        //     idompotencyKey: uuidv4()
-        // })
-
         const newOrder = new Order({
             name: curUser.name,
             email: curUser.email,
             userId: curUser._id,
             orderItems: cartItems,
             orderAmount: payable,
-            shippingAddress: {
-                street: token.card.address_line1,
-                city: token.card.address_city,
-                pincode: token.card.address_zip
-            },
             transactionId: uuidv4()
         })
 
