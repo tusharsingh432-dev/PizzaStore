@@ -33,7 +33,7 @@ export default function Checkout({ payable }) {
             },
             theme: {
                 color: "#3399cc",
-            },  
+            },
         };
         const razorpayObject = new window.Razorpay(options);
         razorpayObject.open();
