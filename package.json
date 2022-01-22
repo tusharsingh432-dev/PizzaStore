@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Pizza Store",
   "main": "index.js",
-  "engines": {
-    "node": "14.7.1",
-    "npm": "6.14.13"
-  },
   "scripts": {
     "client-install": "npm install --prefix client",
     "server": "nodemon server.js",
