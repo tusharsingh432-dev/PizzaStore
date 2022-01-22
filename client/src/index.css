@@ -81,3 +81,26 @@ code {
   padding: 5px;
   margin: 10px;
 }
+
+.adminfunctions{
+  background-color: rgb(192, 71, 71);
+  padding: 10px;
+}
+
+.adminfunctions li{
+  display: inline;
+  list-style-type: none;
+  margin: 10px;
+}
+
+.adminfunctions li a{
+  color: white !important;
+  text-decoration: none;
+  transition: ease-in 1.5ms;
+}
+
+table, th, td {
+  border: 1px solid black !important;
+  border-collapse: collapse;
+  padding: 10px;
+}

@@ -14,7 +14,7 @@
     "react-bootstrap": "^2.0.4",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.1.2",
@@ -46,5 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:8000/"
 }

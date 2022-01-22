@@ -9,23 +9,24 @@ import LoginScreen from './screens/LoginScreen';
 import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import OrderScreen from './screens/OrderScreen';
+import AdminScreen from './screens/Admin/AdminScreen';
 function App() {
   return (
     <div className='App'>
       <Navbar />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<HomeScreen />} />
-          <Route path='/cart' element={<CartScreen />} />
-          <Route path='/login' element={<LoginScreen />} />
-          <Route path='/register' element={<RegisterScreen />} />
-          <Route path='/orders' element={<OrderScreen />} />
-        </Routes>
+        <Switch>
+          <Route path="/" exact component={HomeScreen} />
+          <Route path='/cart' component={CartScreen} />
+          <Route path='/login' component={LoginScreen} />
+          <Route path='/register' component={RegisterScreen} />
+          <Route path='/orders' component={OrderScreen} />
+          <Route path='/admin/' component={AdminScreen} />
+        </Switch>
       </BrowserRouter>
     </div>
-
   );
 }
 

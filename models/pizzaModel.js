@@ -6,7 +6,7 @@ const pizzaSchema = mongoose.Schema({
         type: 'string',
         require
     },
-    varients: [],
+    varients: { type: Array, default: ['small', 'medium', 'large'] },
     prices: [],
     category: {
         type: 'string',
