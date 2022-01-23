@@ -30,18 +30,20 @@ function Navbar() {
                             <li className="nav-item">
                                 {
                                     loginState.isLogin
-                                        ? <Dropdown>
-                                            <Dropdown.Toggle className="nav-link" id="dropdown-basic"
-                                                style={{ "background": "none", "border": "none", "outline": "none" }}
-                                            >
-                                                {loginState.user.name}
-                                            </Dropdown.Toggle>
+                                        ? <div className="justify-content-center w-100" style={{ margin: "auto" }}>
+                                            <Dropdown>
+                                                <Dropdown.Toggle className="nav-link" id="dropdown-basic"
+                                                    style={{ "background": "none", "border": "none", "outline": "none", margin: "auto" }}
+                                                >
+                                                    {loginState.user.name}
+                                                </Dropdown.Toggle>
 
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item href="/orders">Orders</Dropdown.Item>
-                                                <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
+                                                <Dropdown.Menu style={{ margin: "auto" }}>
+                                                    <Dropdown.Item href="/orders">Orders</Dropdown.Item>
+                                                    <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </div>
 
                                         : <a className="nav-link loginlink " href="/login">Login</a>
                                 }

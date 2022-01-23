@@ -17,7 +17,7 @@ router.post("/createOrder", async (req, res) => {
     };
     instance.orders.create(option, function (error, order) {
         if (error)
-            return res.send(500).json({ message: "Error with the api call" });
+            return res.send(500).json({ message: error });
         res.json(order.id);
     });
 });

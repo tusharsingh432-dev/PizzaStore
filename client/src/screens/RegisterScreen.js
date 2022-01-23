@@ -17,6 +17,12 @@ export default function RegisterScreen() {
     const dispatch = useDispatch();
 
     function handleRegister() {
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            ;
+        } else
+            alert("You have entered an invalid email address!")
+
         if (password === password2) {
             const user = {
                 name,

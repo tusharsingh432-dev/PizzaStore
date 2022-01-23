@@ -19,7 +19,7 @@ export default function Filter() {
                     </select>
                 </div>
                 <div className="col-md-3">
-                    <button type="text" className="butn w-100" style={{ margin: "12px" }} onClick={() => dispatch(filterPizzas(searchKey, dishType))}>Search</button>
+                    <button type="text" className="butn w-100" style={{ margin: "15px" }} onClick={() => dispatch(filterPizzas(searchKey, dishType))}>Search</button>
                 </div>
             </div>
         </div>

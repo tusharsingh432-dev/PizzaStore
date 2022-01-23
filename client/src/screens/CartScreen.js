@@ -1,12 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import Checkout from '../components/Checkout';
 export default function CartScreen() {
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.cartReducer);
+    const loginState = useSelector(state => state.loginUserReducer);
     const cartItems = cartState.cartItems;
     const subtotal = cartItems.reduce((acc, item) => acc += (item.price * item.quantity), 0)
+    useEffect(() => {
+        if (!loginState.isLogin) {
+            window.location.href = '/login';
+            return <h1>403: Forbidden</h1>
+        }
+    }, [])
+
+    if (!loginState.isLogin) {
+        return <h1>403: Please Login First</h1>
+    }
+
     // console.log(subtotal)u
     return (
         <div className="row justify-content-center">

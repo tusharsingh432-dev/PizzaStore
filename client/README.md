@@ -1,3 +1,12 @@
+# Pizza Store
+
+https://pizzastorefullstack.herokuapp.com/
+
+This is a full stack pizza app where you can login and order pizza
+with payment integration.
+
+The project frontend and backend were deployed together in Heroku.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
