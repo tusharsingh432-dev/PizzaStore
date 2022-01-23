@@ -22,7 +22,16 @@ router.post('/login', async (req, res) => {
         if (response.length == 0) {
             throw "No user found"
         }
-        res.send(response[0])
+        console.log(response[0]);
+        const newUser = {
+            name: response[0].name,
+            email: response[0].email,
+            isAdmin: response[0].isAdmin,
+            createdAt: response[0].createdAt,
+            updatedAt: response[0].updatedAt
+        }
+        console.log(newUser);
+        res.send(newUser)
     } catch (err) {
         console.error(err);
         res.status(404).json({ message: err });
