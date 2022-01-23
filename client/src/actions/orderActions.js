@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { emptyCart } from './cartActions';
 export const placeOrder = (payable) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
 
@@ -9,9 +10,9 @@ export const placeOrder = (payable) => async (dispatch, getState) => {
 
     try {
         const response = await axios.post('/api/orders/placeOrder', { payable, curUser, cartItems });
-        dispatch({ type: "PLACE_ORDER_SUCESS" });
-        console.log(response);
-
+        dispatch({ type: "PLACE_ORDER_SUCESS", payload: response });
+        // console.log(response);
+        dispatch(emptyCart());
     } catch (e) {
         dispatch({ type: "PLACE_ORDER_FAILED", payload: e });
     }

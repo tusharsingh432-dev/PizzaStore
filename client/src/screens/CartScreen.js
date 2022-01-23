@@ -2,11 +2,15 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import Loading from '../components/Loading'
+import Success from '../components/Success'
+import Error from '../components/Error'
 import Checkout from '../components/Checkout';
 export default function CartScreen() {
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.cartReducer);
     const loginState = useSelector(state => state.loginUserReducer);
+    const orderState = useSelector(state => state.placeOrderReducer);
     const cartItems = cartState.cartItems;
     const subtotal = cartItems.reduce((acc, item) => acc += (item.price * item.quantity), 0)
     useEffect(() => {
@@ -19,12 +23,12 @@ export default function CartScreen() {
     if (!loginState.isLogin) {
         return <h1>403: Please Login First</h1>
     }
-
     // console.log(subtotal)u
     return (
         <div className="row justify-content-center">
             <div className="col-md-6">
                 <h1>Cart Items</h1>
+                {(subtotal === 0) && <h3>The cart is empty</h3>}
                 {cartItems.map(cartItem => {
                     return <div className="row" key={cartItem._id} style={{ "margin": "20px 20px" }}>
                         <div className="col-md-8" style={{ "display": "flex", "flexDirection": "column", "alignItems": "start" }} >
@@ -58,7 +62,11 @@ export default function CartScreen() {
             </div>
             <div className="col-md-4">
                 <h2>Subtotal:  ₹{subtotal}/-</h2>
-                <Checkout payable={subtotal} />
+                {subtotal > 0 ? <Checkout payable={subtotal} /> : <h5>Please add items to checkout</h5>}
+
+                {orderState.loading && <Loading />}
+                {orderState.error && <Error error="Payment Failed" />}
+                {orderState.success && <Success message="Order Placed" />}
             </div>
         </div>
     )

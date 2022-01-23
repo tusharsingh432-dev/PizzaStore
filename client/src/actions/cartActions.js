@@ -22,5 +22,10 @@ export const addToCart = (pizza, variant, quantity) => (dispatch, getState) => {
 export const removeFromCart = (pizza) => (dispatch, getState) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: pizza });
     const cartItems = getState().cartReducer.cartItems;
-    localStorage.removeItem('cartItems', JSON.stringify(cartItems))
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+}
+
+export const emptyCart = () => dispatch => {
+    dispatch({ type: "EMPTY_CART" });
+    localStorage.removeItem('cartItems');
 }
