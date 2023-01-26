@@ -1,7 +1,7 @@
 
 # Pizza Store
 
-https://pizzastorefullstack.herokuapp.com/
+https://pizzastore.up.railway.app/
 
 This is a full stack pizza app where you can login and order pizza
 with payment integration.
